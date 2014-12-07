@@ -1,0 +1,3563 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			*{font-size:12px}
+			h1, h2, h3, h4, h5, h6,
+			div, p, blockquote, pre, address,
+			ul, ol, li, dl, dt, dd,
+			table, caption, th, td,
+			form, fieldset, legend,thead,tbody,
+			hr {
+				margin:0;
+				padding:0;
+			}
+			body {
+				margin:0;
+				padding:0;
+				font-family:Dotum,Verdana,sans-serif;
+				font-size:12px;
+				color:#666666;
+				width:100%;
+			}
+			table {
+				margin:0;
+				padding:0;
+				border-spacing:0;
+				border:0;
+				border-collapse:collapse;
+			}
+			caption{visibility:hidden;height:0;font-size:0}
+			h1.tit{padding:15px;font-size:16px}
+			p.depth1{font-size:20px;font-weight:bold;text-align:left;background-color:#ccc;padding:5px;border-bottom:1px solid #d9d9d9;cursor:pointer;height:20px;padding:20px;}
+			table.tableType1{width:100%;border:1px solid #ccc}
+			table.tableType1 th{border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:5px 0}
+			table.tableType1 td{border-right:1px solid #ccc;border-bottom:1px solid #ccc;padding:5px}
+			table.tableType1 td.txtCenter{text-align:center}
+			table.tableType1 td.completeDay{text-align:center}
+			table.tableType1 td.publisher{text-align:center}
+			table.tableType1 tr.line td {border-bottom:2px solid #999;}
+			table.tableType1 tr.line2 td {border-bottom:5px solid #999;}
+			 #publisher,#txtCenter,#completeDay{width:65px;}
+			 a:link, a:hover, a:visited, a:active {color:#666; text-decoration:none;}
+		</style>
+		<script src="js/jquery.js"></script>
+		<script type="text/javascript">
+
+			var TableNm = "list3" ; //DBTable 이름
+			// 데이터베이스 열기
+			(function($){
+				// 테이블 생성
+				// var db = openDatabase("workBoardklist", " ", TableNm + " Database", 1024*1024);
+				// db.transaction(function (tx)
+				// {
+				// 	// if not exists 구문을 이용, 테이블이 없을때에만 테이블 생성
+				// 	// employee_id는 자동으로 인덱싱되는 키본키
+
+				// 	tx.executeSql("create table if not exists "+ TableNm + "(" +
+				// 							" employee_id integer primary key autoincrement," +
+				// 							" nm2, nm3, nm4, nm5, nm6, nm7, fileID, fileName, filePath, publisher, txtCenter, completeDay integer)");
+
+				// });
+
+				// //목록 나열 하기
+				// $.fn.load = function(){
+				// 	// SELECT문 실행
+				// 		db.transaction(function (tx)
+				// 		{
+				// 			tx.executeSql("select * from " + TableNm, [], function(tx, rs)
+				// 			{
+				// 			//table1
+				// 			var list = $("#table1");
+				// 			list.find("tr").each(function(){
+				// 				list.find("tr").attr("id",list.find("tr").index($(this)));
+				// 				var trID = list.find("tr").index($(this));
+				// 				var newArr=new Array();
+				// 				$(this).find("td").each(function(){
+				// 					tdText =$(this).html();
+				// 					newArr.push(tdText);
+				// 				});
+				// 				newArr.unshift(trID);
+
+				// 				// Employee 테이블에 값 저장
+				// 				db.transaction(function (tx)
+				// 				{
+				// 					tx.executeSql("insert into " + TableNm + " ( employee_id ,nm2, nm3, nm4, nm5, nm6, nm7, fileID, fileName, filePath, publisher, txtCenter, completeDay) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", newArr);
+				// 				});
+				// 			});
+
+				// 			list.html("");
+				// 			var rows = rs.rows;
+				// 			// Employee 테이블에 저장된 모든 값을 표시
+				// 			for ( var i = 0 ; i < rows.length ; i++ )
+				// 			{
+				// 				var row = rows.item(i);
+				// 				var tdItem = "<tr><td>"+row.nm2+"</td><td>"+row.nm3+"</td><td>"+row.nm4+"</td><td>"+row.nm5+"</td><td>"+row.nm6+"</td><td>"+row.nm7+"</td><td>"+row.fileID+"</td><td>"+row.fileName+"</td><td>"+row.filePath+"</td><td class='publisher'>"+row.publisher+"</td><td class='txtCenter'>"+row.txtCenter+"</td><td class='completeDay'>"+row.completeDay+"</td><td><button class='addTr'>+</button><button class='removeButton' id="+row.employee_id+">삭제</button></td></tr>"
+				// 				list = list.append(tdItem);
+				// 				//<button class='removeButton' id="+row.employee_id+">삭제</button>
+				// 			}
+				// 			$.fn.remove();
+				// 			$.fn.addTr();
+				// 			$(".workList").listToggle()
+				// 			$.fn.totalToggle();
+				// 			$.fn.selName();
+				// 		});
+				// 	});
+				// }
+
+				// // 목록 추가 하기
+				// $.fn.add = function(){
+				// 	$("#addButton").click(function(){
+				// 		var nm2 = $("#nm2").val();
+				// 		var nm3 = $("#nm3").val();
+				// 		var nm4 = $("#nm4").val();
+				// 		var nm5 = $("#nm5").val();
+				// 		var nm6 = $("#nm6").val();
+				// 		var nm7 = $("#nm7").val();
+				// 		var fileID = $("#fileID").val();
+				// 		var fileName = $("#fileName").val();
+				// 		var filePath = $("#filePath").val();
+				// 		var publisher = $("#publisher").val();
+				// 		var txtCenter = $("#txtCenter").val();
+				// 		var completeDay = $("#completeDay").val();
+				// 		var nm = $("#table1").find("tr").index($(this).parent().parent());
+				// 		var tdLen = $(this).parent().parent().parent().find("tr").length - 1 ;
+
+				// 		jQuery.fn.reverse = [].reverse;
+				// 		if(nm < tdLen ){
+				// 			$(this).parent().parent().siblings().reverse().each(function(){
+				// 				var index = parseFloat($("#table1").find("tr").index($(this)))-1;
+				// 				if(index >= nm){
+				// 					var id = index + 1 ;
+				// 					db.transaction(function(tx) {
+				// 						tx.executeSql("UPDATE " + TableNm + " SET employee_id = "+ id +" WHERE employee_id = " + index); //
+				// 					});
+				// 					db.transaction(function(tx) {
+				// 						tx.executeSql("insert into " + TableNm + " (employee_id, nm2, nm3, nm4, nm5, nm6, nm7, fileID, fileName, filePath, publisher, txtCenter, completeDay) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [nm, nm2, nm3, nm4, nm5, nm6, nm7, fileID, fileName, filePath, publisher, txtCenter, completeDay]);
+				// 						$.fn.load();
+				// 					});
+				// 				}
+				// 			});
+				// 		} else {
+				// 			db.transaction(function (tx){
+				// 				tx.executeSql("insert into " + TableNm + " (employee_id, nm2, nm3, nm4, nm5, nm6, nm7, fileID, fileName, filePath, publisher, txtCenter, completeDay) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [nm, nm2, nm3, nm4, nm5, nm6, nm7, fileID, fileName, filePath, publisher, txtCenter, completeDay], function (tx, rs)
+				// 				{
+				// 					$.fn.load();
+				// 				});
+				// 			});
+				// 		}
+				// 	});
+				// }
+
+				// // 목록 삭제 하기
+				// $.fn.remove =function(){
+				// 	$(".removeButton").click(function(){
+				// 		var nm = $(this).attr("id");
+				// 		db.transaction(
+				// 			function(t){
+				// 				t.executeSql(
+				// 					"delete from " + TableNm + " where employee_id=" + nm
+				// 				)
+				// 				$.fn.load();
+				// 			});
+				// 	});
+				// }
+
+				// $.fn.addTr =function(){
+				// 	$(".addTr").click(function(){
+				// 		var myTbody = $(this).parent().parent().parent();
+				// 		var nm = myTbody.find("tr").index($(this).parent().parent());
+				// 		myTbody.find("tr").eq(nm).after("<tr><td><input id='nm2' type='text' title='2depth'/></td><td><input id='nm3' type='text' title='3depth'/></td><td><input id='nm4' type='text' title='4depth'/></td><td><input id='nm5' type='text' title='5depth'/></td><td><input id='nm6' type='text' title='6depth'/></td><td><input id='nm7' type='text' title='7depth'/></td><td><input id='fileID' type='text' title='화면 ID'/></td><td><input id='fileName' type='text' title='화면명'/></td><td><input id='filePath' type='text' title='파일경로' value='<a href=></a>'/></td><td><input id='publisher' type='text' title='작업자'/></td><td><input id='txtCenter' type='text' title='작업일:'/></td><td><input id='completeDay' type='text' title='완료일::'/></td><td><button id='addButton'>+</button></td></tr>")
+				// 		$.fn.add();
+				// 	});
+				// }
+				//db data셋팅 끝
+
+				//sorting기능
+				$.fn.listToggle=function(){
+					var target = $(".workList p");
+					//target.next().hide();
+					target.each(function(){
+						var tt = $(this);
+						var tr = tt.next().find("tr").length;
+						var td = tt.next().find(".percent");
+						var completeNm = 0;
+						td.each(function(){
+							if($(this).text() != 0){
+								completeNm += 1
+							}
+						});
+						var total = tt.find(".total");
+						var complete = tt.find(".txtCenter");
+						var percent = tt.find('.percent');
+						complete.text(completeNm);
+						total.text(tr-1);
+						var percentNum = completeNm/(tr-1)*100;
+						var ppp = percentNum.toFixed();
+						percent.text(ppp);
+						/*tt.toggle(function(){
+							target.next().slideUp(200);
+							tt.next().slideDown(200);
+						},function(){
+						   // target.next().slideUp(200);
+                            tt.next().slideUp(200);
+						});*/
+					});
+					target.on('click',function(){
+						target.next().slideToggle();
+					});
+					// target.toggle(function(){
+					// 	//target.next().slideUp(200);
+					// 	target.next().slideDown(200);
+					// },function(){
+					//    // target.next().slideUp(200);
+					// 	target.next().slideUp(200);
+					// });
+				}
+
+				$.fn.totalToggle=function(){
+					var target = $(".workList p");
+					var btn = $("button");
+					btn.each(function(){
+						$(this).click(function(){
+							var dt = $(this).attr("title");
+							if(dt=="allopen"){
+								target.next().slideDown(200);
+							}else{
+								target.next().slideUp(200);
+							}
+						});
+					});
+				}
+
+				$.fn.selName=function(){
+					var ts = $(this);
+					ts.each(function(){
+						var str;
+						$(this).find("select").change(function () {
+				          $(this).find("option:selected").each(function () { // 여기서 option:secleted를 해준 이유는 select의 특성때문에... change가 된다는건 selected된다는거....
+				               str = $(this).text(); // selected 된 것의 텍스트를 가지고 온다는거...
+				          });
+				          var pub = $(this).parent().parent().parent().parent().find('.publisher');
+				          pub.each(function(){
+				          
+	
+				          	var pubtxt = $(this).text();
+				          	if(pubtxt == str){
+				          		$(this).parent().show();
+				          	}else{
+				          		$(this).parent().hide();
+				          	}
+				          });
+				          if(str == '작업자') pub.parent().show(); // 전체보기
+				        })
+					});
+				}
+
+				$.fn.selName=function(){
+					var ts = $(".tableType1");
+					ts.each(function(){
+						var str;
+						$(this).find("select").change(function () {
+				          $(this).find("option:selected").each(function () { // 여기서 option:secleted를 해준 이유는 select의 특성때문에... change가 된다는건 selected된다는거....
+				               str = $(this).text(); // selected 된 것의 텍스트를 가지고 온다는거...
+				          });
+				          var pub = $(this).parent().parent().parent().parent().find('.publisher');
+				          pub.each(function(){
+				          	var pubtxt = $(this).text();
+				          	if(pubtxt == str){
+				          		$(this).parent().show();
+				          	}else{
+				          		$(this).parent().hide();
+				          	}
+				          });
+				          if(str == '작업자') pub.parent().show(); // 전체보기
+				        })
+					});
+				}
+
+			})(jQuery);
+
+			$(function(){
+				$("body").load();
+				$("body").add();
+				$(".workList").listToggle();
+				//$("body").totalToggle();
+				$(".tableType1").selName();
+			});
+
+		</script>
+	</head>
+	<body>
+		<div class="workList">
+			<p class="depth1"><span style="margin-right:20px;font-size:20px;">아이모아</span> total :<span class="total" style="font-size:20px;"></span> page , txtCenter :<span class="txtCenter" style="font-size:20px;"></span> page , 진척률 : <span class="percent" style="font-size:20px;"></span> %</p>
+			<div class="list">
+				<table summary="작업목록 리스트" class="tableType1">
+					<caption>작업 목록</caption>
+					<colgroup>
+						<col width="8%" />
+						<col width="12%" />
+						<col width="12%" />
+						<col width="12%" />
+                        <col width="10%" />
+						<col width="7%" />
+						<col width="*" />
+						<col width="7%" />
+						<col width="7%" />
+						<col width="10%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>구분</th>
+							<th>1depth</th>
+							<th>2depth</th>
+							<th>3depth</th>
+                            <th>4depth</th>
+							<th>화면 ID</th>
+							<th>파일경로</th>
+							<th>
+								<select name="select" id="form1">
+									<option value="option0">작업자</option>
+									<option value="option2">장윤희</option>
+									<option value="option3">최장호</option>
+								</select>
+							</th>
+							<th>작업일</th>
+							<th>완료일/비고</th>
+						</tr>
+					</thead>
+					<tbody id="table1">
+						<tr>
+							<td><strong>아이모아_Web<br />유치원&amp;교사 (WA)</strong></td>
+							<td>Main</td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>원아관리</td>
+							<td>원아현황 O</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_01.html" target="_blank">html/WA/childstate_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>원아삭제 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_pop_1-2.html" target="_blank">html/WA/childstate_pop_1-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-02</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>원아등록 popup</td>
+							<td>원아정보(tab)</td>
+							<td class="percent"><a href="html/WA/childstate_pop_1-1.html" target="_blank">html/WA/childstate_pop_1-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">기획서 수정 반영</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>반편성</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_02.html" target="_blank">html/WA/childstate_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">기획서 수정 반영</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비 그룹 편성</td>
+                            <td></td>
+							<td></td>
+							<td>교육비기준 편성(tab)</td>
+							<td class="percent"><a href="html/WA/childstate_03-1.html" target="_blank">html/WA/childstate_03-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">기획서 수정 반영</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td>특별활동편성(tab)</td>
+							<td class="percent"><a href="html/WA/childstate_03-2.html" target="_blank">html/WA/childstate_03-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">기획서 수정 반영</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td>기타비용 그룹편성(tab)</td>
+							<td class="percent"><a href="html/WA/childstate_03-3.html" target="_blank">html/WA/childstate_03-3.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">기획서 수정 반영</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>생활기록부</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_04.html" target="_blank">html/WA/childstate_04.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>생활기록부 popup</td>
+							<td>인적, 학적, 출결 일괄적용 popup</td>
+							<td class="percent"><a href="html/WA/childstate_pop_4-1.html" target="_blank">html/WA/childstate_pop_4-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>생활기록부 popup</td>
+							<td>인적사항(tab)</td>
+							<td class="percent"><a href="html/WA/childstate_pop_4-2.html" target="_blank">html/WA/childstate_pop_4-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-02</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>출석부 O</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_05.html" target="_blank">html/WA/childstate_05.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>출석부등록 popup</td>
+							<td></td>
+							<td class="percent"><a href="html/WA/childstate_pop_5-1.html" target="_blank">html/WA/childstate_pop_5-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>출석체크 popup</td>
+							<td></td>
+							<td class="percent"><a href="html/WA/childstate_pop_5-2.html" target="_blank">html/WA/childstate_pop_5-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>관찰일지</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_06.html" target="_blank">html/WA/childstate_06.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>관찰일지 등록 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_pop_6-1.html" target="_blank">html/WA/childstate_pop_6-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>생활기록부이관내역</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_07.html" target="_blank">html/WA/childstate_07.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>생활기록부 이관요청 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_pop_7-1.html" target="_blank">html/WA/childstate_pop_7-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>SMS/MMS내역</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_08.html" target="_blank">html/WA/childstate_08.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>SMS/MMS 발송 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/childstate_pop_8-1.html" target="_blank">html/WA/childstate_pop_8-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>등하원알리미</td>
+							<td>차량운행기초설정</td>
+							<td>차량등록</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim01.html" target="_blank">html/WA/preschool_arim01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>차량등록 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행기초설정_1.html" target="_blank">html/WA/finance_pop_차량운행기초설정_1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>노선등록</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim02.html" target="_blank">html/WA/preschool_arim02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>정류장 위치 등록 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행기초설정_2.html" target="_blank">html/WA/finance_pop_차량운행기초설정_2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>노선등록 완료 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행기초설정_3.html" target="_blank">html/WA/finance_pop_차량운행기초설정_3.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량운행관리현황</td>
+							<td>배차관리</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim03.html" target="_blank">html/WA/preschool_arim03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>현황관리</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim04.html" target="_blank">html/WA/preschool_arim04.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>날짜변경요청 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행관리현황_날짜팝업.html" target="_blank">html/WA/finance_pop_차량운행관리현황_날짜팝업.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>위치변경요청 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행관리현황_웹페이지_변경01.html" target="_blank">html/WA/finance_pop_차량운행관리현황_웹페이지_변경01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>위치변경요청 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행관리현황_웹페이지_변경02.html" target="_blank">html/WA/finance_pop_차량운행관리현황_웹페이지_변경02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>위치변경요청 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행관리현황_웹페이지_변경03.html" target="_blank">html/WA/finance_pop_차량운행관리현황_웹페이지_변경03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>이력관리</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim05.html" target="_blank">html/WA/preschool_arim05.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>변경요청현황 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량운행관리현황_변경요청.html" target="_blank">html/WA/finance_pop_차량운행관리현황_변경요청.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>변경요청현황 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_정류장별현황.html" target="_blank">html/WA/finance_pop_정류장별현황.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>정류장별현황</td>
+							<td>등교노선</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim06_1.html" target="_blank">html/WA/preschool_arim06_1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>노선승차예정현황 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_정류장별현황_1.html" target="_blank">html/WA/finance_pop_정류장별현황_1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>하교노선</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim06_2.html" target="_blank">html/WA/preschool_arim06_2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>노선승차예정현황 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_정류장별현황_2.html" target="_blank">html/WA/finance_pop_정류장별현황_2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량변경요청현황</td>
+							<td>승차</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/preschool_arim07.html" target="_blank">html/WA/preschool_arim07.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>차량 변경 요청 승인 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_차량변경요청현황_1.html" target="_blank">html/WA/finance_pop_차량변경요청현황_1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>하차</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>스마트알림장</td>
+							<td>공지사항 O</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_notice.html" target="_blank">html/WA/smart_notice.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>삭제 popup</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_삭제팝업.html" target="_blank">html/WA/smart_pop_notice_삭제팝업.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>등록 popup</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_등록팝업.html" target="_blank">html/WA/smart_pop_notice_등록팝업.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>원아선택 popup</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_원아선택.html" target="_blank">html/WA/smart_pop_notice_원아선택.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>원내긴급알림 popup</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_원내긴급알림.html" target="_blank">html/WA/smart_pop_notice_원내긴급알림.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>메시지 SMS popup</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_등록알림SMS.html" target="_blank">html/WA/smart_pop_notice_등록알림SMS.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>등록 popup</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_edit.html" target="_blank">html/WA/smart_pop_notice_edit.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>등록알림SMS popup</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_등록알림SMS.html" target="_blank">html/WA/smart_pop_notice_등록알림SMS.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>행사일정 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WA/유치원_신규_행사일정.html" target="_blank">html/WA/유치원_신규_행사일정.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>popup</td>
+							<td class="percent"><a href="html/WA/팝업_행사일정_개별등록.html" target="_blank">html/WA/팝업_행사일정_개별등록.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>popup</td>
+							<td class="percent"><a href="html/WA/팝업_행사일정_개별등록_2.html" target="_blank">html/WA/팝업_행사일정_개별등록_2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 발신현황 O</td>
+							<td>원내 긴급알림</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_message_send_01.html" target="_blank">html/WA/smart_message_send_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>등록 알림 메시지 재전송 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_메시지재전송.html" target="_blank">html/WA/smart_pop_notice_메시지재전송.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>원내 긴급 알림 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_원내긴급알림_등록.html" target="_blank">html/WA/smart_pop_notice_원내긴급알림_등록.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 발신현황 O</td>
+							<td>학부모 알림</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_message_send_02.html" target="_blank">html/WA/smart_message_send_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>학부모알림_등록 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_학부모알림_등록.html" target="_blank">html/WA/smart_pop_notice_학부모알림_등록.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 수신현황 O</td>
+							<td>원내 긴급알림</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_message_send_01.html" target="_blank">html/WA/smart_message_send_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>원내긴급알림 등록 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_원내긴급알림_등록.html" target="_blank">html/WA/smart_pop_notice_원내긴급알림_등록.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>원내긴급알림 답장 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_원내긴급알림_답장.html" target="_blank">html/WA/smart_pop_notice_원내긴급알림_답장.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 수신현황 O</td>
+							<td>학부모 알림</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_message_send_02.html" target="_blank">html/WA/smart_message_send_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>학부모알림 등록</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_학부모알림_등록.html" target="_blank">html/WA/smart_pop_notice_학부모알림_등록.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>학부모알림 답장</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/smart_pop_notice_학부모알림_답장.html" target="_blank">html/WA/smart_pop_notice_학부모알림_답장.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-03</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>식단표 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WA/유치원_신규_식단표_오늘의식단.html" target="_blank">html/WA/유치원_신규_식단표_오늘의식단.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>투약의뢰서 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WA/유치원_신규_투약의뢰서_금일투약의뢰현황_2.html" target="_blank">html/WA/유치원_신규_투약의뢰서_금일투약의뢰현황_2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>귀가동의서 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>포토앨범 O</td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WA/유치원_신규_포토앨범_2.html" target="_blank">html/WA/유치원_신규_포토앨범_2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WA/유치원_신규_포토앨범_2_선택삭제.html" target="_blank">html/WA/유치원_신규_포토앨범_2_선택삭제.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>포토 뷰 O</td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WA/유치원_신규_포토앨범_뷰페이지.html" target="_blank">html/WA/유치원_신규_포토앨범_뷰페이지.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>청구수납관리</td>
+							<td>교육비청구내역조회</td>
+							<td>청구내역</td>
+							<td></td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/receipt_01_01.html" target="_blank">html/WA/receipt_01_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>청구상세내역</td>
+							<td></td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/receipt_01_02.html" target="_blank">html/WA/receipt_01_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>청구서수정 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/receipt_pop_1-2.html" target="_blank">html/WA/receipt_pop_1-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>CMS/키즈뱅킹출금요청</td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_02.html" target="_blank">html/WA/receipt_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비수납(청구기준)</td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_03.html" target="_blank">html/WA/receipt_03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비수납(수납기준)</td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_04.html" target="_blank">html/WA/receipt_04.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비납부영수증</td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_05.html" target="_blank">html/WA/receipt_05.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비청구내역</td>
+							<td>청구항목별집계</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_06_01.html" target="_blank">html/WA/receipt_06_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>청구항목별원장</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_06_02.html" target="_blank">html/WA/receipt_06_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>원아별원장</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_06_03.html" target="_blank">html/WA/receipt_06_03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비수납내역</td>
+							<td>수납내역</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_07_01.html" target="_blank">html/WA/receipt_07_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>일별-원아별</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_07_02.html" target="_blank">html/WA/receipt_07_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>일별</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_07_03.html" target="_blank">html/WA/receipt_07_03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비결손처리</td>
+							<td>일별</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/receipt_08.html" target="_blank">html/WA/receipt_08.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>회계장부</td>
+							<td>회계장부작성</td>
+							<td>현금출납부</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_01.html" target="_blank">html/WA/accountbook_01_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>원아삭제 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_pop_1-1.html" target="_blank">html/WA/accountbook_pop_1-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>계좌가져오기 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_pop_1-2.html" target="_blank">html/WA/accountbook_pop_1-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>간편등록 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_pop_1-3.html" target="_blank">html/WA/accountbook_pop_1-3.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>수입/지출결의서</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_02.html" target="_blank">html/WA/accountbook_01_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면참고수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>징수결의서</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_03.html" target="_blank">html/WA/accountbook_01_03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면참고수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>총계정원장 지출부 수입/징수부</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_04.html" target="_blank">html/WA/accountbook_01_04.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면참고수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>수입일계표 수입월계표</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_05.html" target="_blank">html/WA/accountbook_01_05.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면참고수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>세입/세출결산표</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_06.html" target="_blank">html/WA/accountbook_01_06.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면참고수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>급여대장</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">기획서 없음</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>교육비대장</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_08.html" target="_blank">html/WA/accountbook_01_08.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>연별시산표</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_09.html" target="_blank">html/WA/accountbook_01_09.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면참고수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>지원금정산서/세목별정산서</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_01_10.html" target="_blank">html/WA/accountbook_01_10.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay">개발화면참고수정</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>양식출력</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank">#</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">디자인작업필요</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>예산관리</td>
+							<td>예산편성</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_03_01.html" target="_blank">html/WA/accountbook_03_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>예산편성 가져오기 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_pop_3-1.html" target="_blank">html/WA/accountbook_pop_3-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>예산전용내역</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_03_02.html" target="_blank">html/WA/accountbook_03_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>과목등록 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_pop_3-2.html" target="_blank">html/WA/accountbook_pop_3-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>예비비사용내역</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_03_03.html" target="_blank">html/WA/accountbook_03_03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>정부보조금명세서</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_03_04.html" target="_blank">html/WA/accountbook_03_04.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>예산보고서</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_03_05.html" target="_blank">html/WA/accountbook_03_05.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>결산보고서</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_03_06.html" target="_blank">html/WA/accountbook_03_06.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>세목관리</td>
+							<td>세목관리</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_04_01.html" target="_blank">html/WA/accountbook_04_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>목별세목관리</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_04_02.html" target="_blank">html/WA/accountbook_04_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>회계검증</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a>#</td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">기획서없음</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>물품관리</td>
+							<td>구매요청 List</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_06_01.html" target="_blank">html/WA/accountbook_06_01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay">화면설계 유치원_원아관리_140108_최종_디자인</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>기안품의 List</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_06_02.html" target="_blank">html/WA/accountbook_06_02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay">화면설계 유치원_원아관리_140108_최종_디자인</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>물품내역관리</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_06_03.html" target="_blank">html/WA/accountbook_06_03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay">화면설계 유치원_원아관리_140108_최종_디자인</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>거래처관리</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/accountbook_07.html" target="_blank">html/WA/accountbook_07.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-06</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>내요청서</td>
+                            <td></td>
+							<td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>급여관리</td>
+							<td>직원관리</td>
+							<td>직원정보</td>
+                            <td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/finance_07.html" target="_blank">html/WA/finance_07.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-23</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>근태관리</td>
+							<td>근태등록</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_14.html" target="_blank">html/WA/finance_14.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-23</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>근태등록 popup</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_pop_15-1.html" target="_blank">html/WA/finance_pop_15-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-23</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>등록대상조회 popup</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_pop_15-2.html" target="_blank">html/WA/finance_pop_15-2.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-23</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>근태현황</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_19.html" target="_blank">html/WA/finance_19.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-23</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>급여관리</td>
+							<td>급여대장</td>
+							<td>급여대장현황</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_25.html" target="_blank">html/WA/finance_25.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>급여관리</td>
+							<td>급여대장</td>
+							<td>급여대장현황</td>
+                            <td>직원 순서 변경 popup</td>
+							<td class="percent"><a href="html/WA/finance_pop_27.html" target="_blank">html/WA/finance_pop_27.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>급여관리</td>
+							<td>급여대장</td>
+							<td>급여대장현황</td>
+                            <td>급여수정안내 popup</td>
+							<td class="percent"><a href="html/WA/finance_pop_29.html" target="_blank">html/WA/finance_pop_29.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>급여대장내역</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_30.html" target="_blank">html/WA/finance_30.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>급여계산</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_36.html" target="_blank">html/WA/finance_36.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>급여수정안내 popup</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_pop_29.html" target="_blank">html/WA/finance_pop_29.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-23</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>원천징수부확인</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_46.html" target="_blank">html/WA/finance_46.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>퇴직금관리</td>
+							<td>퇴직금계산</td>
+							<td></td>
+							<td></td>
+							<td class="percent"><a href="html/WA/finance_52.html" target="_blank">html/WA/finance_52.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>퇴직금내역 상세보기 popup</td>
+							<td></td>
+							<td class="percent"><a href="html/WA/finance_pop_퇴직금내역 상세보기.html" target="_blank">html/WA/finance_pop_퇴직금내역 상세보기.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>퇴직금계산 예제보기 popup</td>
+							<td></td>
+							<td class="percent"><a href="html/WA/finance_pop_55.html" target="_blank">html/WA/finance_pop_55.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-24</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>퇴직금지급현황</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_56.html" target="_blank">html/WA/finance_56.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>누적현황</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_59.html" target="_blank">html/WA/finance_59.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-26</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>월별현황</td>
+                            <td></td>
+							<td class="percent"><a href="html/WA/finance_60.html" target="_blank">html/WA/finance_60.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-26</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>이월금액등록 popup</td>
+							<td class="percent"><a href="html/WA/finance_pop_이월금액등록.html" target="_blank">html/WA/finance_pop_이월금액등록.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-26</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>사업소득자관리</td>
+							<td>사업소득자정보</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_65.html" target="_blank">html/WA/finance_65.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-26</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>업종구분코드내역 조회 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_pop_66.html" target="_blank">html/WA/finance_pop_66.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-26</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>사업소득내역조회</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_67.html" target="_blank">html/WA/finance_67.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-26</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>사업소득작성</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_74.html" target="_blank">html/WA/finance_74.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-26</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>금융관리</td>
+							<td>금융자산현황</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_management01.html" target="_blank">html/WA/finance_management01.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>계좌거래내역조회</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_management02.html" target="_blank">html/WA/finance_management02.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>신용카드청구내역조회</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_management03.html" target="_blank">html/WA/finance_management03.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>계좌등록</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_management04.html" target="_blank">html/WA/finance_management04.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>신용카드등록</td>
+                            <td>신용카드등록</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/finance_management05.html" target="_blank">html/WA/finance_management05.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>신용카드등록 popup</td>
+							<td>계좌정보</td>
+							<td class="percent"><a href="html/WA/management05_pop-1.html" target="_blank">html/WA/management05_pop-1.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2013-12-31</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>부가서비스관리</td>
+							<td>부가서비스 신청</td>
+							<td>가상계좌</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>문자</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>기타</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>부가서비스 이용조회</td>
+							<td>부가서비스 이용현황</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>문자사용내역</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>가상계좌사용내역</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>금융결제원 CMS 사용내역</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>기초설정</td>
+							<td>시설운영</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_시설운영.html" target="_blank">html/WA/기초설정_시설운영.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_분리입금계좌설정(출금이체)_popup.html" target="_blank">html/WA/기초설정_분리입금계좌설정(출금이체)_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_시설운영_popup.html" target="_blank">html/WA/기초설정_시설운영_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육비설정</td>
+                            <td>교육비</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_교육비설정_교육비.html" target="_blank">html/WA/기초설정_교육비설정_교육비.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>교육비일괄반영 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/교육비설정_교육비일괄반영_popup.html" target="_blank">html/WA/교육비설정_교육비일괄반영_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>교육비 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_교육비설정_popup.html" target="_blank">html/WA/기초설정_교육비설정_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>특별활동비</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_교육비설정_특별활동비.html" target="_blank">html/WA/기초설정_교육비설정_특별활동비.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>특별활동비 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_교육비설정_특별활동비_popup.html" target="_blank">html/WA/기초설정_교육비설정_특별활동비_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>기타비용</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_교육비설정_기타비용.html" target="_blank">html/WA/기초설정_교육비설정_기타비용.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>기타비용 popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_기타비용설정_popup.html" target="_blank">html/WA/기초설정_기타비용설정_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						
+						<tr>
+							<td></td>
+							<td></td>
+							<td>직원정보</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_직원정보.html" target="_blank">html/WA/기초설정_직원정보.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td>인사기본정보_popup</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_직원정보_인사기본정보_popup.html" target="_blank">html/WA/기초설정_직원정보_인사기본정보_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>이용자관리</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_시설운영.html" target="_blank">html/WA/기초설정_시설운영.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>이용자관리</td>
+                            <td>이용자관리</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_이용자관리_이용자관리.html" target="_blank">html/WA/기초설정_이용자관리_이용자관리.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>학부모관리</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_이용자관리_학부모관리.html" target="_blank">html/WA/기초설정_이용자관리_학부모관리.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td></td>
+							<td>서비스이용관리</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">디자인필요</td>
+						</tr>
+
+						<tr class="line">
+							<td></td>
+							<td></td>
+							<td>시스템설정</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WA/기초설정_시스템설정.html" target="_blank">html/WA/기초설정_시스템설정.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-07</td>
+							<td class="completeDay"></td>
+						</tr>
+						
+						<!-- <tr>
+							<td><strong>아이모아 Lite<br />(등하원알리미)<br />유치원&amp;교사 (WB)</strong></td>
+							<td>메인</td>
+							<td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>원아관리</td>
+							<td>원아현황</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>반편성</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>출석부</td>
+							<td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>차량운행관리</td>
+							<td>차량운행기초설정</td>
+							<td>차량등록</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>노선등록</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량운행관리현황</td>
+							<td>배차관리</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>현황관리</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>이력관리</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>정류장별현황</td>
+							<td>등교노선</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>하교노선</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량변경요청현황</td>
+							<td>승차</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>하차</td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>스마트알림장</td>
+							<td>공지사항</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 발신현황</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 수신현황</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>기초설정</td>
+							<td>시설운영</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>시스템설정</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>메시지관리</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr class="line">
+							<td></td>
+							<td></td>
+							<td>서비스이용관리</td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr> -->
+						<tr>
+							<td><strong>아이모아<br />학부모 (WC)</strong></td>
+							<td>메인</td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>원아생활</td>
+							<td>생활기록부</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/원아생활_생활기록부.html" target="_blank">html/WC/원아생활_생활기록부.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>관찰일지</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/원아생활_관찰일지.html" target="_blank">html/WC/원아생활_관찰일지.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>관찰일지 상세보기 pop</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/원아생활_관찰일지_pop.html" target="_blank">html/WC/원아생활_관찰일지_pop.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>출석부</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/원아생활_출석부.html" target="_blank">html/WC/원아생활_출석부.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>출석부 상세보기 pop</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/원아생활_출석부_pop.html" target="_blank">html/WC/원아생활_출석부_pop.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>등하원알리미</td>
+							<td>노선도 O</td>
+							<td></td>
+                            <td></td>
+							<td>등원/하원</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량변경요청현황 O</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/등하원알리미_차량변경요청현황.html" target="_blank">html/WC/등하원알리미_차량변경요청현황.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>스마트알림장</td>
+							<td>공지사항 O</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/스마트알림장_공지사항.html" target="_blank">html/WC/스마트알림장_공지사항.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>공지사항 상세보기 pop</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/스마트알림장_공지사항_pop.html" target="_blank">html/WC/스마트알림장_공지사항_pop.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>행사일정 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WC/스마트알림장_행사일정.html" target="_blank">html/WC/스마트알림장_행사일정.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>행사일정 pop</td>
+							<td></td>
+							<td class="percent"><a href="html/WC/스마트알림장_행사일정_pop.html" target="_blank">html/WC/스마트알림장_행사일정_pop.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 발신현황 O</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/스마트알림장_알림메시지 발신.html" target="_blank">html/WC/스마트알림장_알림메시지 발신.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>메시지보내기 pop</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/스마트알림장_메시지보내기_pop.html" target="_blank">html/WC/스마트알림장_메시지보내기_pop.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 수신현황 O</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/스마트알림장_알림메시지 수신.html" target="_blank">html/WC/스마트알림장_알림메시지 수신.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>식단표 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WC/스마트알림장_월별식단표.html" target="_blank">html/WC/스마트알림장_월별식단표.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>투약의뢰서 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WC/스마트알림장_투약의뢰서.html" target="_blank">html/WC/스마트알림장_투약의뢰서.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>투약의뢰서 등록 pop</td>
+							<td>신규메뉴</td>
+							<td class="percent"></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">캔버스_등록</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>투약의뢰서 상세보기 pop</td>
+							<td>신규메뉴</td>
+							<td class="percent"></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">캔버스_뷰</td>
+						</tr>			
+						<tr>
+							<td></td>
+							<td></td>
+							<td>귀가동의서 O</td>
+							<td></td>
+                            <td></td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WC/스마트알림장_귀가동의서.html" target="_blank">html/WC/스마트알림장_귀가동의서.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>귀가동의요청 등록 pop</td>
+							<td>신규메뉴</td>
+							<td class="percent"></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">캔버스_등록</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>귀가동의요청 상세보기 pop</td>
+							<td>신규메뉴</td>
+							<td class="percent"></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">캔버스_뷰</td>
+						</tr>		
+						<tr>
+							<td></td>
+							<td>포토앨범</td>
+							<td>포토앨범 O</td>
+							<td></td>
+                            <td>리스트</td>
+							<td>신규메뉴</td>
+							<td class="percent"><a href="html/WC/포토앨범.html" target="_blank">html/WC/포토앨범.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>슬라이드 이미지</td>
+							<td></td>
+							<td class="percent"><a href="html/WC/포토앨범_뷰페이지.html" target="_blank">html/WC/포토앨범_뷰페이지.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>선택된 이미지 댓글</td>
+							<td></td>
+							<td class="percent"><a href="html/WC/포토앨범_뷰페이지_댓글보기.html" target="_blank">html/WC/포토앨범_뷰페이지_댓글보기.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>교육비납부</td>
+							<td>납부고지서</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/교육비납부_납부고지서.html" target="_blank">html/WC/교육비납부_납부고지서.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>납부내역</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/교육비납부_납부고지서_납부내역.html" target="_blank">html/WC/교육비납부_납부고지서_납부내역.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr class="line2">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>납부내역 pop</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WC/교육비납부_납부고지서_납부내역_popup.html" target="_blank">html/WC/교육비납부_납부고지서_납부내역_popup.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter">2014-01-09</td>
+							<td class="completeDay"></td>
+						</tr>
+						<!-- <tr>
+							<td></td>
+							<td>기초설정</td>
+							<td>시설정보</td>
+							<td></td>
+						                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr class="line2">
+							<td></td>
+							<td></td>
+							<td>우리아이정보관리</td>
+							<td></td>
+						                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr> -->
+						<tr>
+							<td><strong>공통메뉴 (WD)</strong></td>
+							<td><strong>로그인 후 메뉴</strong></td>
+							<td>아이모아 공지사항</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WD/본창서브페이지_공지사항.html" target="_blank">html/WD/본창서브페이지_공지사항.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>교육일정&후기</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WD/본창서브페이지_교육일정후기.html" target="_blank">html/WD/본창서브페이지_교육일정후기.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>연합회 소식</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>커뮤니티(유치원/학부모)</td>
+							<td>우리 유치원 커뮤니티 / 아이모아 커뮤니티</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WD/본창서브페이지_커뮤니티.html" target="_blank">html/WD/본창서브페이지_커뮤니티.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>비밀글</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WD/본창서브페이지_커뮤니티_비밀글.html" target="_blank">html/WD/본창서브페이지_커뮤니티_비밀글.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>입력창</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WD/본창서브페이지_커뮤니티_입력창.html" target="_blank">html/WD/본창서브페이지_커뮤니티_입력창.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+                            <td>컨텐츠화면</td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WD/본창서브페이지_커뮤니티_컨텐츠화면.html" target="_blank">html/WD/본창서브페이지_커뮤니티_컨텐츠화면.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						
+						<tr>
+							<td></td>
+							<td><strong>로그인 전 메뉴</strong></td>
+							<td>로그인 전 공지사항 pop</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">디자인 필요</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>아이모아 소개</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="html/WD/imore_intro.html" target="_blank">html/WD/imore_intro.html</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay">2014-01-09</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>가입안내</td>
+							<td>가입안내</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank">상동</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>이용신청서 다운로드</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank">상동</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>아이모아 공지사항</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank">상동</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>Quick&Smart Helper</td>
+							<td>자주하는질문</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank">상동</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr class="line2">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>매뉴얼 다운로드</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank">상동</a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td><strong>아이모아_Smart</strong></td>
+							<td><strong>유치원&교사 (SA)</strong></td>
+							<td>메인</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>원아정보</td>
+                            <td></td>
+							<td></td>
+							<td>교육비정보/수납계좌정보/청구수납</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>수납현황</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>유치원공지사항</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>행사일정</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>식단표</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>포토앨범</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>투약의뢰서</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>귀가동의서</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>우리 유치원 커뮤니티</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>아이모아 커뮤니티</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지</td>
+                            <td></td>
+							<td></td>
+							<td>발신현황/수신현황</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>등하원 알림</td>
+                            <td></td>
+							<td></td>
+							<td>등원/하원</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>승하차 알림</td>
+                            <td></td>
+							<td></td>
+							<td>등원/하원</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량변경요청현황</td>
+                            <td></td>
+							<td></td>
+							<td>등원/하원</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>환경설정</td>
+							<td>기본정보설정</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>홈화면설정</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>푸시알림설정</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>앱정보</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>아이모아 공지사항</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr class="line">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>수납메뉴노출설정</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td><strong>아이모아_Smart</strong></td>
+							<td><strong>학부모 (SB)</strong></td>
+							<td>메인</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>우리 아이 정보</td>
+							<td></td>
+                            <td></td>
+							<td>교육비정보/수납계좌정보/청구수납</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>납부내역</td>
+                            <td></td>
+							<td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>유치원공지사항</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>행사일정</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>식단표</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>포토앨범</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>투약의뢰서</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>귀가동의서</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>우리 유치원 커뮤니티</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>아이모아 커뮤니티</td>
+							<td></td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>알림메시지 </td>
+							<td></td>
+                            <td></td>
+							<td>발신현황/수신현황</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량노선정보</td>
+							<td></td>
+                            <td></td>
+							<td>등원/하원</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>차량변경요청현황</td>
+							<td></td>
+                            <td></td>
+							<td>등원/하원</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>환경설정</td>
+							<td>기본정보설정</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>홈화면설정</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>푸시알림설정</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>앱정보</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>아이모아 공지사항</td>
+                            <td></td>
+							<td>&nbsp;</td>
+							<td class="percent"><a href="#" target="_blank"></a></td>
+							<td class="publisher"></td>
+							<td class="txtCenter"></td>
+							<td class="completeDay"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

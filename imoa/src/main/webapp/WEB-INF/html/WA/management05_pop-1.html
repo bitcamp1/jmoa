@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 신용카드등록</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+	<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="../../js/imoajq.js"></script>
+</head>
+<body>
+	<div class="popup_layer" style="width:800px">
+		<div class="headerArea">
+			<h1>신용카드등록</h1>
+		</div>
+		<div class="bodyArea">
+			<!-- tab -->
+			<div class="tabWrap">
+				<ul class="tabMenu tabType">
+					<li>
+						<a href="#tab01">
+							<span>계좌정보</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab02">
+							<span>금융정보</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--// tab -->
+
+			<div class="tab_content" id="tab01">
+				<table class="tbl_type02" summary="카드사, 구분, 카드번호, 카드별칭, 카드비밀번호, 유효기간, 확인, 결제일, 사용자, 적요">
+					<caption>신용카드등록</caption>
+						<colgroup>
+						<col style="width:18%;" />
+						<col style="width:36%;" />
+						<col style="width:18%;" />
+						<col style="width:auto" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row" class="emph">카드사</th>
+							<td colspan="3">
+								<select name="" class="sel_middle">
+									<option>광주비자</option>
+								</select>				
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph">구분</th>
+							<td colspan="3">
+								<select name="" class="sel_middle">
+									<option>국내전용</option>
+								</select>	
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph">카드번호</th>
+							<td colspan="3">
+								<input type="text" class="ipt_txt_middle" />	
+							</td>		
+						</tr>
+						<tr>
+							<th scope="row" class="emph">카드별칭</th>
+							<td colspan="3">
+								<input type="text" class="ipt_txt_middle" />				
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph">카드비밀번호</th>
+							<td>
+								<input type="password" class="ipt_txt_middle" />							
+							</td>
+							<th scope="row" class="emph bl">확인</th>
+							<td>
+								<input type="password" class="ipt_txt_middle" />							
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph">유효기간</th>
+							<td>
+								<select class="sel_md" title="월 선택">
+									<option value="">01</option>
+									<option value="">02</option>
+									<option value="">03</option>
+									<option value="">04</option>
+									<option value="">05</option>
+									<option value="">06</option>
+									<option value="">07</option>
+									<option value="">08</option>
+									<option value="">09</option>
+									<option value="">10</option>
+									<option value="">11</option>
+									<option value="">12</option>
+								</select>
+								<select id="day00" class="sel_yy" title="년도 선택">
+									<option value="">2013</option>
+									<option value="">2014</option>
+									<option value="">2015</option>
+									<option value="">2016</option>
+									<option value="">2017</option>
+								</select>				
+							</td>
+							<th scope="row" class="emph bl">결제일</th>
+							<td>
+								<select name="" class="sel_middle">
+									<option>국내전용</option>
+								</select>							
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph">사용자</th>
+							<td colspan="3">
+								<input type="text" class="ipt_txt_middle" />	
+							</td>		
+						</tr>
+						<tr>
+							<th scope="row">적요</th>
+							<td colspan="3">
+								<input type="text" class="ipt_txt_full" />	
+							</td>		
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="tab_content" id="tab02">
+				<table class="tbl_type02" summary="웹아이디, 비밀번호, 확인">
+					<caption>금융정보</caption>
+						<colgroup>
+						<col style="width:18%;" />
+						<col style="width:36%;" />
+						<col style="width:18%;" />
+						<col style="width:auto" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row" class="emph">웹아이디</th>
+							<td colspan="3">
+								<input type="password" class="ipt_txt_middle" />		
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph">비밀번호</th>
+							<td>
+								<input type="password" class="ipt_txt_middle" />							
+							</td>
+							<th scope="row" class="emph bl">확인</th>
+							<td>
+								<input type="password" class="ipt_txt_middle" />							
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>저장</em>
+				</a>
+				<a href="#" class="btn_pack large darkgray">
+					<em>닫기</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

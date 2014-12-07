@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 퇴직금계산 예제보기</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+	<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/imoajq.js"></script>
+	<script type="text/javascript" src="../../js/jquery.bxslider.js"></script>
+</head>
+<body>
+	<div class="popup_layer" style="width:965px;">
+		<!-- headerArea -->
+		<div class="headerArea">
+			<h1>퇴직금계산 예제보기</h1>
+		</div>
+		<!-- //headerArea -->
+		<!-- bodyArea -->
+		<div class="bodyArea">
+			<!-- content -->
+			<div class="content">
+				<div class="left">
+					<div class="section">
+						<h2>퇴직금계산 예제</h2>
+						<p>
+							입사일자: 2005년 10월 2일<br />
+							퇴사일자: 2008년 9월 16일<br />
+							재직일수: 1080일<br />
+							월 기본급: 1,500,000원<br />
+							월 기타수당: 240,000원<br />
+							연간 상여금: 4,000,000원<br />
+							연차수당 지급 기준액: 20,000원
+						</p>
+						<p>
+							연차수당은 퇴직 전전년도 (2006년)에 발생한 휴가중 퇴직 전년도(2007년)에<br />
+							미사용한 휴가일수분의 합계
+						</p>
+					</div>
+					<div>
+						<h3>가.퇴직전 3개월간 임금총액</h3>
+						<table summary="퇴직전 기간별 퇴직금 금액" class="tbl_type01" style="width:434px;">
+							<caption>퇴직금 금액</caption>
+							<colgroup>
+								<col style="width:auto;" />
+								<col style="width:21%;" />
+								<col style="width:21%;" />
+								<col style="width:21%;" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">기간</th>
+									<th scope="col">기간별 일수</th>
+									<th scope="col">기본급</th>
+									<th scope="col">기타수당</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<td>합계</td>
+									<td>92일</td>
+									<td>4,500,000원</td>
+									<td>720,000원</td>
+								</tr>
+							</tfoot>
+							<tbody>
+								<tr>
+									<td>2009.06.16 ~ 2008.06.30</td>
+									<td>15일</td>
+									<td>750,000원</td>
+									<td>120,000원</td>
+								</tr>
+								<tr>
+									<td>2009.07.01 ~ 2008.07.31</td>
+									<td>31일</td>
+									<td>1,500,000원</td>
+									<td>240,000원</td>
+								</tr>
+								<tr>
+									<td>2008.08.01 ~ 2008.08.31</td>
+									<td>31일</td>
+									<td>1,500,000원</td>
+									<td>240,000원</td>
+								</tr>
+								<tr>
+									<td>2008.09.01 ~ 2008.09.15</td>
+									<td>19일</td>
+									<td>750,000원</td>
+									<td>120,000원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="right">
+					<div class="section">
+						<h3>나.평균임금의 산정 연간상여금</h3>
+						<p>
+							총액: 4,000,000원<br />
+							연차수당: 200,000원 (20,000원*10일)
+						</p>
+						<p>
+							A. 3개월 간 임금 총액: 5,220,000원 = 4,500,000원+720,000원<br />
+							B. 상여금가산액: 1,000,000원 = 4,000,000원*(3/12)<br />
+							C. 연차수당 가산액: 50,000원 = (20,000원*10일)*(3/12)
+						</p>
+						<p>
+							1일 평균임금 = 퇴직일 이전 3개월간에 지급받은 임금 총액 (A+B+C)/퇴직일<br />
+							이전 3개월간의 총 일 수<br />
+							68,152원 18전 = (5,220,000원+1,000,000원+50,000원)/92
+						</p>
+					</div>
+					<div>
+						<h3>다.퇴직금=1일 평균임금*30(일)*(근속년수+1년 미만 기간의 일수/365)</h3>
+						<p>
+							6,049,665원 = 1일 평균임금 68,152원 18전*30일*(2년+360일/365일)<br />
+							* 기타수당이 평균임금에 포함되는지 여부에 따라 퇴직금 총액에 차이 발생<br />
+							* 자세한 내용은 [정책마당 - 근로개선 - 근로기준보호 - 퇴직급여]을 참고
+						</p>
+					</div>
+				</div>
+			</div>
+			<!-- //content -->
+			<!-- btn_area -->
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>확인</em>
+				</a>
+			</div>
+			<!-- //btn_area -->
+		</div>
+		<!-- //bodyArea -->
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

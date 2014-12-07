@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 근태등록</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+</head>
+<body>
+	<div class="popup_layer" style="width:660px;">
+		<div class="headerArea">
+			<h1>근태등록</h1>
+		</div>
+		<div class="bodyArea">
+			<table class="tbl_type02" summary="근태등록 대장자의 긴간,근태구분,시간, 등록">
+				<caption>근태등록</caption>
+				<colgroup>
+					<col style="width:18%;" />
+					<col style="width:25%;" />
+					<col style="width:18%;" />
+					<col style="width:auto" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row"><label for="registration_object">등록대상</label></th>
+						<td colspan="3">
+							<input type="text" name="" id="registration_object" class="ipt_txt_small2" />
+							<a href="#" class="btn_pack medium gray">
+								<em>조회</em>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="effective_period">적용기간</label></th>
+						<td colspan="3">
+							<input type="text" id="effective_period" class="ipt_txt_small" />
+							<a href="#">
+								<img src="../../images/icon/icon_calendar.png" alt="달력" />
+							</a>
+								~
+							<input type="text" class="ipt_txt_small" />
+							<a href="#">
+								<img src="../../images/icon/icon_calendar.png" alt="달력" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="division">근태구분</label></th>
+						<td>
+							<select name="" id="division" class="sel_small2">
+								<option value="">전체</option>
+								<option value="">전체</option>
+								<option value="">전체</option>
+								<option value="">전체</option>
+								<option value="">전체</option>
+							</select>
+						</td>
+						<th scope="row" class="bl"><label for="time_service">근무시간</label></th>
+						<td>
+							<input type="text" id="time_service" class="ipt_txt_xsmall" />
+							~
+							<input type="text" class="ipt_txt_xsmall" />
+							<input type="text" class="ipt_txt_time" />
+							시간
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="recess">휴식시간</label></th>
+						<td>
+							<select name="" id="recess" class="sel_small2">
+								<option value="">전체</option>
+								<option value="">전체</option>
+								<option value="">전체</option>
+								<option value="">전체</option>
+								<option value="">전체</option>
+							</select>
+						</td>
+						<th scope="row" class="bl">일괄등록제외</th>
+						<td>
+							<input type="checkbox" name="" id="day_off" />
+							<label for="day_off" class="fst">휴일</label>
+							<input type="checkbox" name="" id="weekend" />
+							<label for="weekend">주말</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>등록</em>
+				</a>
+				<a href="#" class="btn_pack large darkgray">
+					<em>닫기</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

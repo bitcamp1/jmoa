@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 인사기본정보</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+</head>
+<body>
+	<div class="popup_layer" style="width: 880px;">
+		<div class="headerArea">
+			<h1>인사기본정보</h1>
+		</div>
+		<div class="bodyArea">
+			<h2>기본정보</h2>
+			<table class="tbl_type02" summary="인사기본정보 입력란 입니다.">
+				<caption>직원정보 입력</caption>
+				<colgroup>
+					<col style="width:130px;" />
+					<col style="width:180px;" />
+					<col style="width:130px;" />
+					<col style="width:180px;" />
+					<col style="width:150px;" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th class="emph" scope="row"><label for="name01">직원명</label></th>
+						<td>
+							<input type="text" id="name01" class="ipt_txt_small2" />
+						</td>
+						<th class="emph bl" scope="row"><label for="staff_num">직원번호</label></th>
+						<td>
+							<input type="text" id="staff_num" class="ipt_txt_small2" />
+						</td>
+						<td class="picture_area tac" rowspan="9">
+							<div class="picture">
+								<img src="../../images/cont/member_photo_sample.gif" alt="" />
+							</div>
+							<div class="btn_area">
+								<a href="#" class="btn_pack medium gray">
+									<em>등록</em>
+								</a>
+								<a href="#" class="btn_pack medium">
+									<em>삭제</em>
+								</a>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="social_num00">연락처1</label></th>
+						<td>
+							<input type="text" id="social_num00" class="ipt_txt_small2" />
+						</td>
+						<th class="bl" scope="row"><label for="social_num01">연락처2</label></th>
+						<td>
+							<input type="text" id="social_num01" class="ipt_txt_small2" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="social_num">주민등록번호</label></th>
+						<td>
+							<input type="text" id="social_num" class="ipt_txt_small2" title="주민등록번호 앞자리" />
+						</td>
+						<th class="emph bl" scope="row"><label for="company_day00">입사일</label></th>
+						<td>
+							<input type="text" id="company_day00" class="ipt_txt_small" />
+							<a href="#">
+								<img src="../../images/icon/icon_calendar.png" alt="달력" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="birthday">생일</label></th>
+						<td colspan="3">
+							<input type="text" id="birthday" class="ipt_txt_small" />
+							<a href="#" class="mr10">
+								<img src="../../images/icon/icon_calendar.png" alt="달력" />
+							</a>
+							<input type="radio" id="birth_ds00" name="birth_ds" /> <label for="birth_ds00" class="mr5">양력</label>
+							<input type="radio" id="birth_ds01" name="birth_ds" /> <label for="birth_ds01">음력</label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="class_00">직군/직책/상태</label></th>
+						<td colspan="3">
+							<select id="class_00" class="sel_small2" title="직군선택">
+								<option value="">선택</option>
+								<option value="2">시설장</option>
+								<option value="3">교사</option>
+								<option value="4">간호사</option>
+								<option value="5">영양사</option>
+								<option value="6">취사부</option>
+								<option value="7">사무원</option>
+								<option value="8">치료사</option>
+								<option value="99">기타</option>
+							</select>
+
+							<select class="sel_small2" title="직책선택">
+								<option value="">선택</option>
+								<option value="">원장</option>
+								<option value="">원감</option>
+								<option value="">선임교사</option>
+							</select>
+
+							<select class="sel_small2" title="상태선택">
+								<option value="">재직</option>
+								<option value="">휴직</option>
+								<option value="">퇴직</option>
+							</select>
+							<input type="text" class="ipt_txt_small" />
+							<a href="#">
+								<img src="../../images/icon/icon_calendar.png" alt="달력" />
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="ch_add">추가사항</label></th>
+						<td colspan="3">
+							<input type="text" id="ch_add" class="ipt_txt_full2" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="email">e-Mail</label></th>
+						<td colspan="3">
+							<input type="text" id="email" class="ipt_txt_small2" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="address00">주소</label></th>
+						<td colspan="3">
+							<div class="inp_section">
+								<input type="text" id="address00" class="ipt_txt_num" title="우편번호 앞자리" />
+								-
+								<input type="text" class="ipt_txt_num" title="우편번호 뒷자리" />
+
+								<a href="#" class="btn_pack medium gray">
+									<em>우편번호찾기</em>
+								</a>
+							</div>
+							<div class="inp_section">
+								<input type="text" class="ipt_txt_full2" title="집주소" />
+							</div>
+							<div>
+								<input type="text" class="ipt_txt_full2" title="상세주소" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="etc">비고</label></th>
+						<td colspan="3">
+							<input type="text" id="etc" class="ipt_txt_full2" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="functionWp mt10">
+				<div class="btnBox">
+					<a href="#" class="btn_pack large icon">
+						<span class="add"></span><em>추가</em>
+					</a>
+					<a href="#" class="btn_pack large icon">
+						<span class="delete"></span><em>삭제</em>
+					</a>
+				</div>
+			</div>
+			<h2>자격정보</h2>
+			<div class="grid" style="height:200px;">
+				grid area
+			</div>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>저장</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

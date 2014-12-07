@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 출석부등록</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+</head>
+<body>
+	<div class="popup_layer" style="width:660px;">
+		<div class="headerArea">
+			<h1>출석부등록</h1>
+		</div>
+		<div class="bodyArea">
+			<table class="tbl_type02" summary="반이름, 원아명, 기간, 비고 내용">
+				<caption>출석등록</caption>
+				<colgroup>
+					<col style="width:18%;" />
+					<col style="width:25%;" />
+					<col style="width:18%;" />
+					<col style="width:auto" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row"><label for="class_name">반이름</label></th>
+						<td>
+							<select name="" id="class_name">
+								<option>바른반</option>
+								<option>예절반</option>
+								<option>미소반</option>
+								<option>기쁨반</option>
+								<option>행복반</option>
+								<option>꽃반</option>
+								<option>gnb</option>
+								<option>네모반</option>
+								<option>세모반</option>
+								<option>아름반</option>
+								<option>다운반</option>
+								<option>다은비</option>
+								<option>삐삐반</option>
+								<option>동수반</option>
+								<option>프레지턴드</option>
+								<option>김승은반</option>
+								<option>김선생반</option>
+								<option>1-1</option>
+							</select>
+						</td>
+						<th scope="row" class="bl"><label for="registration_object">원아명</label></th>
+						<td>
+							<input type="text" name="" id="registration_object" class="ipt_txt_small2" />
+							<a href="#" class="btn_pack medium gray">
+								<em>조회</em>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="effective_period">기간</label></th>
+						<td colspan="3">
+							<input type="text" id="effective_period" class="ipt_txt_small" />
+							<a href="#">
+								<img src="../../images/icon/icon_calendar.png" alt="달력" />
+							</a>
+								~
+							<input type="text" class="ipt_txt_small" />
+							<a href="#">
+								<img src="../../images/icon/icon_calendar.png" alt="달력" />
+							</a>
+							<select name="" id="division">
+								<option>결석(질병)</option>
+								<option>결석(무단)</option>
+								<option>결석(기타)</option>
+								<option>조퇴(질병)</option>
+								<option>조퇴(무단)</option>
+								<option>조퇴(기타)</option>
+								<option>출석</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="division">비고</label></th>
+						<td colspan="3">
+							<textarea style="width:93%; height:100px;" rows="3" cols="5"></textarea>
+						</td>
+					</tr>					
+				</tbody>
+			</table>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>확인</em>
+				</a>
+				<a href="#" class="btn_pack large darkgray">
+					<em>닫기</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

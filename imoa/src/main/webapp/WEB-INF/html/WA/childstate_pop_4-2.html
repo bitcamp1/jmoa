@@ -1,0 +1,468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 생활기록부 팝업</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+	<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="../../js/imoajq.js"></script>
+</head>
+<body>
+	<div class="popup_layer large" style="width:800px">
+		<!-- headerArea -->
+		<div class="headerArea">
+			<h1>생활기록부</h1>
+		</div>
+		<!-- //headerArea -->
+		<!-- bodyArea -->
+		<div class="bodyArea">
+			<div class="tit_area">
+				<table class="printStyle" summary="졸업대장번호">
+					<caption>졸업대장번호</caption>
+					<colgroup>
+						<col style="width:30%" />
+						<col style="width:auto" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">졸업대장번호</th>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="printStyle lst" summary="성명, 성별, 생년월일">
+					<caption>개인정보</caption>
+					<colgroup>
+						<col style="width:10%" />
+						<col style="width:20%" />
+						<col style="width:10%" />
+						<col style="width:20%" />
+						<col style="width:10%" />
+						<col style="width:auto" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">성명</th>
+							<td>최문경</td>
+							<th scope="row" class="bl">성별</th>
+							<td>&nbsp;</td>
+							<th class="bl">생년월일</th>
+							<td>2007-10-31</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="btn">
+					<a href="#" class="btn_pack large skyblue">
+						<em>인적,학적,출결사항반영</em>
+					</a>
+				</div>
+			</div>
+			<!-- tab -->
+			<div class="tabWrap">
+				<ul class="tabMenu tabType">
+					<li>
+						<a href="#tab01">
+							<span>인적사항</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab02">
+							<span>학적사항</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab03">
+							<span>출결사항</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab04">
+							<span>신체발달사항</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab05">
+							<span>유아발달사항</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--// tab -->
+
+			<!--tab_01-->
+			<div class="tab_content" id="tab01">
+				<table class="tbl_type02">
+					<caption>수납정보</caption>
+					<colgroup>
+						<col style="width:13%;" />
+						<col style="width:13%;" />
+						<col style="width:25%" />
+						<col style="width:25%" />
+						<col />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="col">주소</th>
+							<td colspan="4">
+								<input type="text" class="ipt_txt_full" />
+								<input type="text" class="ipt_txt_full mt5" />
+								<input type="text" class="ipt_txt_full mt5" />
+							</td>
+						</tr>
+						<tr>
+							<th scope="col" rowspan="3">가족사항</th>
+							<th class="pd0">
+								<div class="th_line">
+									<span class="left">구분</span><span class="right">관계</span>
+								</div>
+							</th>
+							<th class="tac">부</th>
+							<th class="tac">모</th>
+							<th class="tac lst">특이사항</th>
+						</tr>
+						<tr>
+							<th>성명</th>
+							<td class="bl">
+								<input type="text" class="ipt_txt_small" />
+							</td>
+							<td class="bl">
+								<input type="text" class="ipt_txt_small" />
+							</td>
+							<td rowspan="2" class="bl">
+								<div class="text_wrap">
+									<textarea class="textarea" cols="30" rows="10" style="height:48px;"></textarea>		
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>생년월일</th>
+							<td>
+								<input type="text" class="ipt_txt_small" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+							</td>
+							<td class="bl">
+								<input type="text" class="ipt_txt_small" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+							</td>
+						</tr>			
+					</tbody>
+				</table>
+			</div>
+			<!--tab_02-->
+			<div class="tab_content"  id="tab02">
+				<table class="tbl_type02">
+					<colgroup>
+						<col style="width:25%;" />
+						<col style="width:50%;" />
+						<col style="width:25%;" />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th>입학 전 경험</th>
+							<td>
+								<input type="text" class="ipt_txt_small" />
+								(
+								<select class="sel_yy">
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select> 년
+								<select class="sel_md">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">11</option>
+									<option value="12">12</option>
+								</select> 개월
+								)
+							</td>
+							<th class="bl lst th_type">특이사항</th>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" class="ipt_txt_small" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+								<input type="text" class="ipt_txt_middle" />
+								<select class="sel_terms">
+									<option>3세</option>
+									<option>4세</option>
+									<option>5세</option>
+									<option>6세이상</option>
+								</select>
+								<select class="sel_terms">
+									<option>재학</option>
+									<option>전출</option>
+									<option>졸업</option>
+									<option>퇴학</option>
+								</select>
+							</td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" class="ipt_txt_small" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+								<input type="text" class="ipt_txt_middle" />
+								<select class="sel_terms">
+									<option>3세</option>
+									<option>4세</option>
+									<option>5세</option>
+									<option>6세이상</option>
+								</select>
+								<select class="sel_terms">
+									<option>재학</option>
+									<option>전출</option>
+									<option>졸업</option>
+									<option>퇴학</option>
+								</select>
+							</td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" class="ipt_txt_small" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+								<input type="text" class="ipt_txt_middle" />
+								<select class="sel_terms">
+									<option>3세</option>
+									<option>4세</option>
+									<option>5세</option>
+									<option>6세이상</option>
+								</select>
+								<select class="sel_terms">
+									<option>재학</option>
+									<option>전출</option>
+									<option>졸업</option>
+									<option>퇴학</option>
+								</select>
+							</td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" class="ipt_txt_small" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+								<input type="text" />
+								<select class="sel_terms">
+									<option>3세</option>
+									<option>4세</option>
+									<option>5세</option>
+									<option>6세이상</option>
+								</select>
+								<select class="sel_terms">
+									<option>재학</option>
+									<option>전출</option>
+									<option>졸업</option>
+									<option>퇴학</option>
+								</select>
+							</td>
+							<td><input type="text" /></td>
+						</tr>
+						<tr>
+							<th>졸업후의 상황</th>
+							<td>
+								<input type="text" />
+								<select class="sel_small3">
+									<option>진학</option>
+									<option>기타</option>
+								</select>
+							</td>
+							<td><input type="text" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="tbl_type01 st01 mt20">
+					<colgroup>
+						<col style="width:15%;" /> 
+						<col style="width:28%;" />
+						<col style="width:28%;" />
+						<col />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="pd0 fst">
+								<div class="th_line"><span class="left">구분</span><span class="right">연령</span></div>
+							</th>
+							<th>만3세</th>
+							<th>만4세</th>
+							<th class="lst">만5세</th>
+						</tr>
+						<tr>
+							<th class="fst">반</th>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td class="lst"><input type="text" class="ipt_txt_small2" disabled="" /></td>
+						</tr>
+						<tr>
+							<th class="fst">담임성명(인)</th>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td class="lst"><input type="text" class="ipt_txt_small2" disabled="" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--tab_03-->
+			<div class="tab_content"  id="tab03">
+				<table class="tbl_type01 st01">
+					<colgroup>
+						<col style="width:15%;" /> 
+						<col style="width:28%;" />
+						<col style="width:28%;" />
+						<col />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="pd0 fst">
+								<div class="th_line"><span class="left">구분</span><span class="right">연령</span></div>
+							</th>
+							<th>만3세</th>
+							<th>만4세</th>
+							<th class="lst">만5세</th>
+						</tr>
+						<tr>
+							<th class="fst">교육일수</th>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td class="lst"><input type="text" class="ipt_txt_small2" disabled="" /></td>
+						</tr>
+						<tr>
+							<th class="fst">출석일수</th>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td class="lst"><input type="text" class="ipt_txt_small2" disabled="" /></td>
+						</tr>
+						<tr>
+							<th class="fst">결석일수</th>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td><input type="text" class="ipt_txt_small2" disabled="" /></td>
+							<td class="lst"><input type="text" class="ipt_txt_small2" disabled="" /></td>
+						</tr>
+						<tr>
+							<th class="fst">의견</th>
+							<td>
+								<div class="textarea">
+									<textarea cols="30" rows="4"></textarea>
+								</div>
+							</td>
+							<td>
+								<div class="textarea">
+									<textarea cols="30" rows="4"></textarea>
+								</div>
+							</td>
+							<td class="lst">
+								<div class="textarea">
+									<textarea cols="30" rows="4"></textarea>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--tab_04-->
+			<div class="tab_content"  id="tab04">
+				<table class="tbl_type01 st01">
+					<colgroup>
+						<col style="width:15%;" /> 
+						<col style="width:28%;" />
+						<col style="width:28%;" />
+						<col />
+					</colgroup>
+					<tbody>
+						<tr>
+							<th class="pd0 fst">
+								<div class="th_line"><span class="left">구분</span><span class="right">검사일</span></div>
+							</th>
+							<td><input type="text" class="ipt_txt_small" style="width:130px" disabled="" /></td>
+							<td><input type="text" class="ipt_txt_small" style="width:130px" disabled="" /></td>
+							<td><input type="text" class="ipt_txt_small" style="width:130px" disabled="" /></td>
+						</tr>
+						<tr>
+							<th class="fst">키</th>
+							<td><input type="text" class="ipt_txt_small" disabled="" /> cm</td>
+							<td><input type="text" class="ipt_txt_small" disabled="" /> cm</td>
+							<td class="lst"><input type="text" class="ipt_txt_small" disabled="" /> cm</td>
+						</tr>
+						<tr>
+							<th class="fst">몸무게</th>
+							<td><input type="text" class="ipt_txt_small" disabled="" /> kg</td>
+							<td><input type="text" class="ipt_txt_small" disabled="" /> kg</td>
+							<td class="lst"><input type="text" class="ipt_txt_small" disabled="" /> kg</td>
+						</tr>
+						<tr>
+							<th class="fst">시력검사</th>
+							<td>좌) <input type="text" class="ipt_txt_xsmall" disabled="" /> 우) <input type="text" class="ipt_txt_xsmall" disabled="" /></td>
+							<td>좌) <input type="text" class="ipt_txt_xsmall" disabled="" /> 우) <input type="text" class="ipt_txt_xsmall" disabled="" /></td>
+							<td class="lst">좌) <input type="text" class="ipt_txt_xsmall" disabled="" /> 우) <input type="text" class="ipt_txt_xsmall" disabled="" /></td>
+						</tr>
+						<tr>
+							<th class="fst">구강검사</th>
+							<td>상) <input type="text" class="ipt_txt_xsmall" disabled="" /> 하) <input type="text" class="ipt_txt_xsmall" disabled="" /></td>
+							<td>상) <input type="text" class="ipt_txt_xsmall" disabled="" /> 하) <input type="text" class="ipt_txt_xsmall" disabled="" /></td>
+							<td class="lst">상) <input type="text" class="ipt_txt_xsmall" disabled="" /> 하) <input type="text" class="ipt_txt_xsmall" disabled="" /></td>
+						</tr>
+						<tr>
+							<th class="fst">특이사항</th>
+							<td>
+								<div class="textarea">
+									<textarea cols="30" rows="4"></textarea>
+								</div>
+							</td>
+							<td>
+								<div class="textarea">
+									<textarea cols="30" rows="4"></textarea>
+								</div>
+							</td>
+							<td class="lst">
+								<div class="textarea">
+									<textarea cols="30" rows="4"></textarea>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!--tab_05-->
+			<div class="tab_content"  id="tab05">
+				<div class="text_wrap">
+					<textarea id="" cols="30" rows="10" class="textarea"></textarea>
+				</div>
+			</div>
+
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>확인</em>
+				</a>
+				<a href="#" class="btn_pack large darkgray">
+					<em>취소</em>
+				</a>
+			</div>
+		</div>
+		<!-- //bodyArea -->
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

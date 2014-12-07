@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+@import url("jh.css");
+@import url("hu.css");
+
+
+.mgT0 {margin-top:0;}
+.mgT20 {margin-top:20px;}
+.pdT0 {padding-top:0 !important;}
+.tCenter {text-align:center;}
+input.wiD500 {width:500px;}
+.widFull {width:100%;}
+.tit em {color:#0089cc;}
+.tit_area .tit.totalCase {display:inline-block;margin-right:20px;}
+
+/*등하원알리미_차량운행관리현황_배차관리 (ASIS)*/
+.routeBox {width:762px;height:627px;overflow-y:auto;margin-top:25px;}
+.routeBox ul {height:177px;}
+.routeBox ul.bot {height:225px;background:url(../images/cont/routeLineBot_bg.png) no-repeat 63px 177px;}
+.routeBox ul li {background:url(../images/cont/routeLine_bg.png) no-repeat right 68px;width:200px;height:177px;float:left;}
+.routeBox ul li.last {width:131px;background:none;}
+.routeBox dl {background:url(../images/cont/routeInput_bg.png) no-repeat 0 0;width:131px;height:177px;position:relative;}
+.routeBox dl dt {text-align:center;padding:8px 0;font-size:14px;font-weight:bold;color:#fff;}
+.routeBox dl dt.routeHead01 {background:url(../images/cont/routeHead01_bg.png) no-repeat 0 0;}
+.routeBox dl dt.routeHead02 {background:url(../images/cont/routeHead02_bg.png) no-repeat 0 0;}
+.routeBox dl dt.routeHead03 {background:url(../images/cont/routeHead03_bg.png) no-repeat 0 0;}
+.routeBox dl dd {padding:7px 12px;line-height:1.5;font-size:16px;font-weight:bold;color:#797979;width:106px;height:88px;}
+.routeBox dl dd.cont {background:url(../images/cont/routeInputDd_bg.png) no-repeat 6px 4px;}
+.routeBox dl dd.on {background:url(../images/cont/routeInputDd_bg_on.png) no-repeat 6px 4px;color:#ddd;}
+.routeBox dl a.btn {height:27px;background:none;text-align:center;display:inline-block;position:absolute;bottom:10px;left:30px;}
+

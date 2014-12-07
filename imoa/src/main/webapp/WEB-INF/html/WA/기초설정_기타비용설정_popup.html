@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 특별활동비설정 수정</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+</head>
+<body>
+	<div class="popup_layer" style="width: 460px;">
+		<div class="headerArea">
+			<h1>기타비용설정 수정</h1>
+		</div>
+		<div class="bodyArea">
+			<h2>기타비용설정 수정</h2>
+			<table class="tbl_type02" summary="기타비용설정 수정의 청구항목,청구주기,최초청구,대상,소득공제,청구수단,예산과목,세목,금액,지원금액,총구예정금액 내용">
+				<caption>기타비용설정 수정</caption>
+				<colgroup>
+					<col style="width:50%;" />
+					<col style="width:50%;" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th class="emph" scope="row"><label for="tr_kd_nm">청구항목</label></th>
+						<td><input type="text" id="tr_kd_nm" class="ipt_txt_small2" /></td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="dcz_fq">청구주기</label></th>
+						<td>
+							<select id="dcz_fq">
+								<option value="">매월</option>
+								<option value="">격월</option>
+								<option value="">분기</option>
+								<option value="">반기</option>
+								<option value="">매년</option>
+								<option value="">한번</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row">최초청구</th>
+						<td>
+							<span class="btn_updown_wrap" style="width:80px; margin-right:10px;">
+								<span>2013-09</span>
+								<a class="up">위로</a>
+								<a class="down">아래로</a>
+							</span>
+							<select>
+								<option value="01">1월</option>
+								<option value="02">2월</option>
+								<option value="03">3월</option>
+								<option value="04">4월</option>
+								<option value="05">5월</option>
+								<option value="06">6월</option>
+								<option value="07">7월</option>
+								<option value="08">8월</option>
+								<option value="09">9월</option>
+								<option value="10">10월</option>
+								<option value="11">11월</option>
+								<option value="12">12월</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="ag_st">대상</label></th>
+						<td>
+							<select id="ag_st">
+								<option value="3">3세</option>
+								<option value="4">4세</option>
+								<option value="5">5세</option>
+								<option value="6">6세이상</option>
+							</select>
+							~
+							<select>
+								<option value="3">3세</option>
+								<option value="4">4세</option>
+								<option value="5">5세</option>
+								<option value="6">6세이상</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row">소득공제</th>
+						<td>
+							<input type="radio" name="icm_mad_yn" id="icm_mad_yn00" /> <label for="icm_mad_yn00" style="margin-right:10px;">Y</label>
+							<input type="radio" name="icm_mad_yn" id="icm_mad_yn01" /> <label for="icm_mad_yn01">N</label>
+						</td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="rqs_mns">청구수단</label></th>
+						<td>
+							<select id="rqs_mns">
+								<option value="1">계좌이체</option>
+								<option value="2" selected="selected">가상계좌</option>
+								<option value="3">키즈뱅킹</option>
+								<option value="5">신용카드</option>
+								<option value="6">금융결제원CMS</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="bgt_sbj_nm">예산과목</label></th>
+						<td><input type="text" id="bgt_sbj_nm" class="ipt_txt_small2" value="기타수익자부담경비" /></td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="bgt_sbj_nm00">세목</label></th>
+						<td><input type="text" id="bgt_sbj_nm00" class="ipt_txt_small2" /></td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="bgt_sbj_nm01">금액</label></th>
+						<td><input type="text" id="bgt_sbj_nm01" class="txt_r ipt_txt_small2" value="50,000" /></td>
+					</tr>
+					<tr>
+						<th class="emph" scope="row"><label for="bgt_sbj_nm02">지원금액</label></th>
+						<td><input type="text" id="bgt_sbj_nm02" class="txt_r ipt_txt_small2" value="0" /></td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="bgt_sbj_nm03">충구예정금액</label></th>
+						<td><input type="text" id="bgt_sbj_nm03" class="txt_r ipt_txt_small2" value="50,000" disabled="disabled" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>저장</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

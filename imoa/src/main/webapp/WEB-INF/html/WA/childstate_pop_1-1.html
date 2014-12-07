@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 원아등록</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+	<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="../../js/imoajq.js"></script>
+</head>
+<body>
+	<div class="popup_layer" style="width:900px">
+		<div class="headerArea">
+			<h1>원아수정</h1>
+		</div>
+		<div class="bodyArea">
+			<!-- tab -->
+			<div class="tabWrap">
+				<ul class="tabMenu tabType">
+					<li>
+						<a href="#tab01">
+							<span>원아정보</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab02">
+							<span>교육비정보</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab03">
+							<span>수납정보</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab04">
+							<span>차량운행정보</span>
+						</a>
+					</li>
+					<li>
+						<a href="#tab05">
+							<span>청구수납관리</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--// tab -->
+
+			<div class="tabContWrap">
+				<!--tab_01-->
+				<div class="tab_content" id="tab01">
+					<table class="tbl_type02">
+						<caption>원아정보</caption>
+						<colgroup>
+							<col style="width:100px;" />
+							<col style="width:270px;" />
+							<col style="width:95px;" />
+							<col />
+							<col style="width:120px;" />	
+							<col style="width:150px;" />
+						</colgroup>
+						<tbody>
+						<tr>
+							<th scope="row" class="emph">원아명</th>
+							<td class="chk_type01">
+								<input type="text" name="" id="registration_object" class="ipt_txt_small" />
+								<input type="radio" id="male" name="sex" /> <label for="male">남</label>
+								<input type="radio" id="female" name="sex" /> <label for="female">여</label>
+							</td>
+							<th scope="row" class="ipt_txt_date">학번</th>
+							<td colspan="2">
+								<input type="text" id="staff_num" class="ipt_txt_date" readonly="readonly" />
+								<input type="checkbox" class="direct_check" id="direct" /> <label for="direct">직접입력</label>
+							</td>
+							<td class="picture_area" rowspan="3">
+								<div class="picture tac pd0">
+									<img src="../../images/cont/member_photo_sample.gif" alt="" />
+								</div>
+								<div class="btn_area mt5">
+									<a href="#" class="btn_pack medium gray">
+										<em>사진찾기</em>
+									</a>
+									<a href="#" class="btn_pack medium">
+										<em>사진삭제</em>
+									</a>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph">생일</th>
+							<td class="chk_type01">
+								<input type="text" class="ipt_txt_date" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+								<input type="radio" name="mem_r" id="mem03" /> <label for="mem03">양력</label>
+								<input type="radio" name="mem_r" id="mem04" /> <label for="mem04">음력</label>
+							</td>
+							<th scope="row" class="emph">입학일</th>
+							<td colspan="2">
+								<input type="text" class="ipt_txt_date" />
+								<a href="#">
+									<img src="../../images/icon/icon_calendar.png" alt="달력" />
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row" class="emph"><label for="address00">주소</label></th>
+							<td colspan="4">
+								<div class="inp_section">
+									<input type="text" id="address00" class="ipt_txt_num" title="우편번호 앞자리" />
+									-
+									<input type="text" class="ipt_txt_num" title="우편번호 뒷자리" />
+									<a href="#" class="btn_pack medium gray">
+										<em>우편번호찾기</em>
+									</a>
+								</div>
+								<div class="inp_section">
+									<input type="text" class="ipt_txt_full" title="집주소" readonly="readonly" style="width:98%" />
+								</div>
+								<div>
+									<input type="text" class="ipt_txt_full" title="상세주소" style="width:98%" />
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row"><label for="note00">비고</label></th>
+							<td>
+								<input type="text" id="note00" class="ipt_txt_full" style="width:95%" />
+							</td>
+							<th scope="row" class="emph">상태</th>
+							<td>
+								<select name="" class="sel_small2">
+									<option>재학</option>
+								</select>
+							</td>
+							<th scope="row">스마트가입여부</th>
+							<td>
+								N(자동값)
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">외국인여부</th>
+							<td><input type="checkbox" /></td>
+							<th scope="row">월반여부</th>
+							<td><input type="checkbox" /></td>
+							<th scope="row">장애인여부</th>
+							<td><input type="checkbox" /></td>
+						</tr>
+						<tr>
+							<th scope="row">소속반</th>
+							<td>						
+								<div class="list_group">
+									<strong>햇살반 </strong>
+									<a href="#" class="btn_pack medium gray">
+										<em>수정</em>
+									</a>
+									<ul>
+										<li>바른반</li>
+				        				<li>예절반</li>
+				        				<li>미소반</li>
+				        				<li>기쁨반</li>
+				        				<li>행복반</li>
+				        				<li>꽃반</li>
+				        				<li>gnb</li>
+				        				<li>네모반</li>
+				        				<li>세모반</li>
+				        				<li>아름반</li>
+				        				<li>다운반</li>
+				        				<li>다은비</li>
+				        				<li>삐삐반</li>
+				        				<li>동수반</li>
+				        				<li>프레지턴드</li>
+				        				<li>김승은반</li>
+				        				<li>김선생반</li>
+				        			</ul>
+				        		</div>
+							</td>
+							<th scope="row">특별활동반</th>
+							<td>
+								<div class="list_group">
+									<strong>수학 </strong>
+									<a href="#" class="btn_pack medium gray">
+										<em>수정</em>
+									</a>
+									<ul>
+										<li>발레</li>
+				        			</ul>
+				        		</div>
+							</td>
+							<th scope="row">기타그룹</th>
+							<td>
+								<div class="list_group">
+									<strong>우유값 </strong>
+									<a href="#" class="btn_pack medium gray">
+										<em>수정</em>
+									</a>
+									<ul>
+										<li>종일반</li>
+				        			</ul>
+				        		</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">보호자</th>
+							<td colspan="5">
+								<div class="btn_right btn_group">
+									<a href="#" class="btn_pack medium gray">
+										<em>조회</em>
+									</a>
+									<a href="#" class="btn_pack medium gray">
+										<em>추가</em>
+									</a>
+									<a href="#" class="btn_pack medium gray">
+										<em>삭제</em>
+									</a>
+								</div>
+								<div class="grid x_scroll" style="width:100%; height:200px;">그리드영역</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!--tab_02-->
+				<div class="tab_content" id="tab02">
+					<div class="section">
+						<div class="h_area">
+							<h2 class="mt5">교육비정보</h2>
+							<p><a class="btn_pack large blue"><em>교육비 설정변경</em></a></p>
+						</div>
+						
+						<div class="grid" style="width:858px; height:50px">
+							grid_area
+						</div>
+					</div>
+
+					<div class="section mt20">
+						<h2>특별활동비, 기타비용 정보</h2>
+						<div class="grid" style="width:858px; height:50px">
+							grid_area
+						</div>
+					</div>
+
+					<div class="section mt20">
+						<h2>2013년 월별 예상 청구금액</h2>
+						<div class="grid" style="width:858px; height:50px">
+							grid_area
+						</div>
+					</div>
+					<div class="foot_txt">
+						<ul class="bull_gray">
+							<li>엑셀 청구 기능을 사용 하실 경우 예상 청구금액, 청구항목 금액은 나오지 않습니다.</li>
+							<li>교육비 기준 정보를 변경시 교육비 그룹 편성에서도 변경을 하시길 바랍니다.</li>
+						</ul>
+					</div>
+				</div>
+
+				<!--tab_03-->
+				<div class="tab_content" id="tab03">
+					<h2>수납정보</h2>
+					<table class="tbl_type02">
+						<caption>수납정보</caption>
+						<colgroup>
+							<col style="width:120px;" />
+							<col />
+						</colgroup>
+						<tbody>
+						<tr>
+							<th scope="col" class="emph">원아명</th>
+							<td>
+								<input type="text" name="" id="registration_object" class="ipt_txt_small" readonly="readonly" />
+							</td>
+						</tr>
+						<tr>
+							<th scope="col">입금전용계좌</th>
+							<td>
+								<div>
+									<select name="" class="sel_small2">
+										<option value="">선택하세요</option>
+									</select>
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+								</div>
+								<div class="mt10">
+									<select name="" class="sel_small2">
+										<option value="">선택하세요</option>
+									</select>
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+								</div>
+								<div class="mt10">
+									<select name="" class="sel_small2">
+										<option value="">선택하세요</option>
+									</select>
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+								</div>
+								<ul class="bull_gray mt10">
+									<li>기업은행 입금전용계좌의 경우 입금과 동시에 정산이 이루어지고,<br /> 기타 은행의 입금전용계좌의 경우 입금 후 1영업일에 정산됩니다. </li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th scope="col">출금계좌<br />(주민번호)</th>
+							<td>
+								<input type="radio" name="mem_r" id="mem03" /> <label for="mem03" class="fst">사용안함</label>
+								<input type="radio" name="mem_r" id="mem04" /> <label for="mem04" class="fst">기업은행키즈뱅킹</label>
+								<input type="radio" name="mem_r" id="mem05" /> <label for="mem05" class="fst">금결원CMS</label>
+								<div class="mt10">
+									<select class="sel_small2">
+										<option value="">선택하세요</option>
+									</select>
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+									<input type="text" class="ipt_txt_middle" readonly="readonly" />
+								</div>
+								<div class="mt10 section">
+									<input type="text" class="ipt_txt_middle fl" readonly="readonly" /> 
+									<ul class="bull_gray fl">
+										<li>예금주의 주민등록번호는 필수 항목입니다.</li>	
+									</ul>
+								</div>
+								<ul class="bull_gray mt10">													
+									<li>금결원CMS 모계좌 분리입금을 사용하기 위해서는 금결원CMS 추가 계약이 필요합니다.</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th scope="col">환불계좌</th>
+							<td>
+								<select name="" class="sel_small2">
+									<option value="">선택하세요</option>
+								</select>
+								<input type="text" class="ipt_txt_middle" />
+								<input type="text" class="ipt_txt_middle" readonly="readonly" />
+							</td>
+						</tr>
+						</tbody>
+					</table>	
+				</div>
+
+				<!--tab_04-->
+				<div class="tab_content" id="tab04">					
+				</div>
+
+				<!--tab_05-->
+				<div class="tab_content" id="tab05">
+					<div class="section">
+						<div class="h_area">
+							<h2 class="mt5">청구수납현황</h2>
+							<p><a class="btn_pack large blue"><em>청구수납조회</em></a></p>
+						</div>
+						
+						<p class="mt20 tar">
+							<input type="checkbox" class="direct_check" id="direct" /> <label for="direct">미납건보기</label>
+						</p>
+						<div class="grid" style="width:858px; height:250px">
+							grid_area
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>확인</em>
+				</a>
+				<a href="#" class="btn_pack large darkgray">
+					<em>닫기</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

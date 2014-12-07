@@ -1,0 +1,99 @@
+@charset "utf-8";
+.inline {display:inline;}
+.topsearch a.btn_pack,
+.picture_area a.btn_pack {*margin-right:5px;}
+.pop_picture {padding:0;}
+
+.x_scroll {overflow-x:auto; overflow-y:hidden; *padding-bottom:18px;}
+.over_x.member_tbl {border-bottom:0;}
+.over_x .tbl_wrap {min-width:1100px; *width: 1200px;}
+.over_x .tbl_type02.last{border-bottom:2px solid #555}
+
+.tbl_type02.license th {padding:7px 0 5px 20px;}
+.tbl_type02.license td {padding:7px !important;}
+.tbl_wrap_lp {float:left; width:217px; margin-top:39px;}
+.tbl_wrap_rp {margin:39px 0 20px 236px}
+.tbl_type02 .th_type {padding-left:0; text-align:center;}
+.th_line {position:relative;width:114px;height:42px;background:url('../images/common/th_line.gif') no-repeat 0 0;}
+.th_line span{display:block;position:absolute;}
+.th_line .left {bottom:5px;left:10px;}
+.th_line .right {top:5px;right:10px;}
+
+.printStyle {width:100%;table-layout:fixed;border:2px solid #000;}
+.printStyle:first-child {border-bottom:0; width:50%;}
+.printStyle th {background:#fafafa; text-align:center;}
+.printStyle th,
+.printStyle td {border:1px solid #000; border-top:0;; border-bottom:0;  padding:13px;}
+.printStyle.lst {margin-bottom:30px;}
+
+.h_area {position:relative;}
+.h_area p {position:absolute; top:-5px; right:0;}
+.btn_right {text-align:right; margin-bottom:5px;}
+
+.chk_list {overflow:hidden; margin-left:20px;}
+.chk_list li {float:left; width:50%;}
+.chk_list li label {margin-left:5px; display:inline-block;}
+
+/*btn_layer*/
+.print_wp .tit {float:left;}
+.print_wp .btn_pack {float:left; margin:3px 5px 0 0;}
+.btn_pack.print {position: relative; cursor: pointer;}
+.btn_pack.icon .add_fn {display:none; position:absolute; top:40px; right:0; background:#fff; padding-right:0; z-index:300;}
+.btn_pack.icon .add_fn .arrow {position:absolute; top:-6px; right:18px; width:10px; height:7px; margin-right:0; background:none;}
+.btn_pack.icon .add_fn .arrow img {background:none; vertical-align:top; }
+.btn_pack.print {float:left; margin:3px 5px 0 0;}
+.btn_pack.print ul { padding-right: 0; background:#fff; z-index: 300; border:2px solid #999999; border-radius:5px; padding:9px 15px;}
+.btn_pack.print ul li {display: block; padding:0 0 0 7px; background: url(../images/icon/ico_bullet.gif) no-repeat left 50%; border-radius:5px; line-height:24px;}
+.btn_pack.print ul li a {background: none; color: #333; font-size:12px; padding-right:0;}
+
+/* 원아관리 */
+.btn_group a {*margin-left:5px;}
+.list_group {overflow-y:auto; height:80px;}
+.list_group li {display:block; }
+
+/* 일자별출석 */
+.attendance{margin:0 0 10px 0;border:1px solid #dfdfdf;}
+.attendance table {table-layout:fixed;width:100%;}
+.attendance td {text-align:center; vertical-align:middle; padding:1px;}
+.attendance td a{display:block;border:1px solid #ddd;padding:15px 0;color:#868686;}
+.attendance td a:hover{text-decoration:none;color:#333;}
+.attendance td a.on{background:#dfdfdf;color:#333;}
+.btn_updown {line-height:1.4 !important;}
+.btn_updown .btn_updown_wrap {width:80px; *margin-right:5px;}
+
+/* SMS Popup */
+.popup_layer .pop_sms {position:relative; overflow:hidden;}
+.popup_layer .pop_sms .left {width:300px; margin-right:0;}
+.popup_layer .pop_sms .grid {overflow:auto;}
+.popup_layer .pop_sms .btn_wrap {position:absolute; top:10px; right:0; width:62px}
+.popup_layer .topsearchArea .btn_pack.sms {left:590px}
+.popup_layer .w_message {text-align:center;}
+.popup_layer .w_message .btn_pack {*margin-right:5px;}
+.popup_layer .jgrid-footer p {margin-bottom:0;}
+.chk_type01 label {margin-right:5px; *margin-right:3px;}
+
+/* 에러팝업 */
+.layer_error {background:url('../images/icon/icon_error.png') no-repeat center top; padding-top:40px; text-align:center;}
+.layer_error strong {color:#ed8311; font-weight:normal; display:block; margin-top:10px;}
+
+/* 반편성 */
+.list_cont_left {padding-top:16px; margin:0 0 25px; border-top:2px solid #555}
+.list_cont {position:relative;}
+.list_cont .tbl_top_area {text-align:center; margin-bottom:15px;}
+.list_cont .lcontent {width:300px;}
+.list_cont .rcontent .r_chk {text-align:right; margin:-25px 5px 10px 0;}
+.list_btn {position:absolute; top:45%; left:315px; width:26px}
+.list_btn a:first-child {display:block; margin-bottom:10px;}
+
+/* 회계장부 */
+.small_tab li a span {min-width:65px;}
+.jgrid-footer {border:1px solid #999; border-top:0; width:100%;}
+.jgrid-footer p {padding:8px;}
+.jgrid-footer span {color:#f8982d; font-weight:bold;}
+
+h2.tit_type {margin:20px 0 10px; font-size: 17px;}
+div.nodata {min-height:25px; *height:25px; line-height:25px;} 
+
+
+
+

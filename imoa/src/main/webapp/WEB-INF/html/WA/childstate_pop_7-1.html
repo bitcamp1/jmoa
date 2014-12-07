@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 생활기록부 이관요청</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+</head>
+<body>
+	<div class="popup_layer" style="width:700px">
+		<div class="headerArea">
+			<h1>생활기록부 이관요청</h1>
+		</div>
+		
+		<div class="bodyArea">
+			<h2>원아정보</h2>
+			<table class="tbl_type02" summary="아동명, 연락처, 입학일자, 소속반, 주소">
+				<caption>원아정보</caption>
+				<colgroup>
+					<col style="width:120px;" />
+					<col style="width:230px;" />				
+					<col style="width:110px;" />
+					<col style="width:auto;" />	
+					<col style="width:170px" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">아동명</th>
+						<td>
+							<input type="text" name="" id="registration_object" class="ipt_txt_small" />
+							<a href="#" class="btn_pack medium gray">
+								<em>조회</em>
+							</a>
+						</td>
+						<th scope="row" class="bl">연락처</th>
+						<td>
+							<input type="text" id="staff_num" class="ipt_txt_small" readonly="readonly" />
+						</td>
+						<td class="picture_area" rowspan="3">
+							<div class="picture tac">
+								<img src="../../images/cont/member_photo_sample.gif" alt="" />
+							</div>
+						</td>					
+					</tr>
+					<tr>
+						<th scope="row">입학일자</th>
+						<td>
+							<input type="text" class="ipt_txt_small" readonly="readonly" />						
+						</td>
+						<th scope="row" class="bl">소속반</th>
+						<td>
+							<input type="text" class="ipt_txt_small" readonly="readonly" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="address00">주소</label></th>
+						<td colspan="3">
+							<div class="inp_section">
+								<div>
+									<input type="text" id="address00" class="ipt_txt_num" title="우편번호 앞자리" readonly="readonly" />
+									-
+									<input type="text" class="ipt_txt_num" title="우편번호 뒷자리" readonly="readonly" />
+								</div>
+							</div>
+							<div class="inp_section">
+								<input type="text" class="ipt_txt_full" title="집주소" readonly="readonly" style="width:98%" />
+							</div>
+							<div>
+								<input type="text" class="ipt_txt_full" title="상세주소" readonly="readonly" style="width:98%" />
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="h_area">
+				<h2 class="mt30">이관기관 정보</h2>
+				<p>
+					<select>
+						<option>타 유치원에서 우리 유치원으로 이관을 신청합니다.</option>
+						<option>우리 유치원에서 타 유치원으로 이관을 신청합니다.</option>
+					</select>
+				</p>
+			</div>
+			<table class="tbl_type02" summary="이관기관명, 연락청, 이관요청사유">
+				<caption>이관기관 정보</caption>
+				<colgroup>
+					<col style="width:110px;" />
+					<col style="width:220px;" />				
+					<col style="width:110px;" />
+					<col style="width:auto;" />	
+					<col style="width:170px" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">이용기관명</th>
+						<td colspan="4">
+							<input type="text" class="ipt_txt_middle" />
+							<a href="#" class="btn_pack medium gray">
+								<em>조회</em>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">연락처</th>
+						<td>
+							<input type="text" class="ipt_txt_small2" readonly="readonly" />
+						</td>
+						<th scope="row" class="bl">FAX</th>
+						<td colspan="2">
+							<input type="text" class="ipt_txt_small2" readonly="readonly" />
+						</td>					
+					</tr>
+					<tr>
+						<th scope="row">이관요청사유</th>
+						<td colspan="4">
+							<input type="text" class="ipt_txt_full" />						
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>확인</em>
+				</a>
+				<a href="#" class="btn_pack large darkgray">
+					<em>취소</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

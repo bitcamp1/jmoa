@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 물품등록팝업</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+	<script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../js/imoajq.js"></script>
+	<script type="text/javascript" src="../../js/jquery.bxslider.js"></script>
+</head>
+<body>
+	<div class="popup_layer" style="width:600px;">
+		<!-- headerArea -->
+		<div class="headerArea">
+			<h1>물품등록</h1>
+		</div>
+		<!-- //headerArea -->
+		<!-- bodyArea -->
+		<div class="bodyArea">
+			<div class="topsearchArea">
+				<span class="lt"></span>
+				<span class="rt"></span>
+				<span class="lb"></span>
+				<span class="rb"></span>
+				<form action="">
+					<fieldset>
+						<legend>정보 조건 조회</legend>
+						<div class="topsearch">
+							<div class="last">								
+								<div class="search_con">
+									<label for="chld_age" class="tit">구매일자</label>
+									<input type="text" id="identify" class="ipt_txt_small" />
+									<a href="#">
+										<img src="../../images/icon/icon_calendar.png" alt="달력" />
+									</a>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<table summary="품명, 규격, 단위, 수량, 단가, 금액 내용" class="tbl_type02">
+				<caption>물품대장</caption>
+				<colgroup>
+					<col style="width:20%;" />
+					<col style="width:30%;" />
+					<col style="width:20%;" />
+					<col style="width:auto;" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="col">물품명</th>
+						<td colspan="3"><input type="text" class="ipt_txt_full" /></td>
+					</tr>
+					<tr>
+						<th scope="row">규격</th>
+						<td></td>
+						<th scope="row">단가</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">수량</th>
+						<td></td>
+						<th scope="row">금액</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">사용처</th>
+						<td colspan="3">
+							<select class="sel_middle">
+								<option value="">반이름, 유치원공통</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">적요</th>
+						<td colspan="3">
+							<div class="text_wrap">
+								<textarea class="textarea" cols="30" rows="10"></textarea>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- //bodyArea -->
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>

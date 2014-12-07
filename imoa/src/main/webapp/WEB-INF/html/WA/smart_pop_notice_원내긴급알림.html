@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>아이모아 | 원내 긴급 알림</title>
+	<link type="text/css" rel="stylesheet" href="../../css/common.css" />
+	<link type="text/css" rel="stylesheet" href="../../css/content.css" />
+</head>
+<body>
+	<div class="popup_layer" style="width:684px;">
+		<div class="headerArea">
+			<h1>원내 긴급 알림</h1>
+		</div>
+		<div class="bodyArea">
+			<table class="tbl_type02" summary="원내 긴급 알림 제목,파일첨부,작성자,내용 작성">
+				<caption>공지사항 작성</caption>
+				<colgroup>
+					<col style="width:25%;" />
+					<col style="width:auto;" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row"><label for="title00">제목</label></th>
+						<td><input type="text" id="title00" class="ipt_txt_full" /></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div style="height:300px;">
+								edit area
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="file_add">파일첨부</label></th>
+						<td>
+							<input type="text" id="file_add" style="width:400px;" />
+							<a href="#" class="btn_pack medium gray">
+								<em>조회</em>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"><label for="userName">작성자</label></th>
+						<td>
+							<select name="" id="userName">
+								<option value="">유치원명</option>
+								<option value="">대표자(imoretest)</option>
+							</select>
+							<input type="radio" id="message_all" name="pushKN" value="" />
+							<label for="message_all">드록알림 전체 보내기</label>
+							<input type="radio" id="message_selec" name="pushKN" value="" />
+							<label for="message_selec">드록알림 선택하여 보내기</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn_area">
+				<a href="#" class="btn_pack large skyblue">
+					<em>확인</em>
+				</a>
+			</div>
+		</div>
+		<a href="#" class="btn_close">닫기</a>
+	</div>
+	<div class="popup_dim"></div>
+</body>
+</html>
